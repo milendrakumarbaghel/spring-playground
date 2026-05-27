@@ -1,0 +1,12 @@
+package org.geofence.springplayground;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class CricketCoach  implements ICoach {
+
+    @Override
+    public String getWorkoutDetails() {
+        return "Practice Batting and Bowling";
+    }
+}

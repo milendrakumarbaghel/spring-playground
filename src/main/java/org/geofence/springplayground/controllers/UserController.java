@@ -1,6 +1,7 @@
 package org.geofence.springplayground.controllers;
 
 import jakarta.validation.Valid;
+import org.geofence.springplayground.dto.PageResponseDTO;
 import org.geofence.springplayground.dto.UserRequestDTO;
 import org.geofence.springplayground.dto.UserResponseDTO;
 import org.geofence.springplayground.services.UserService;
@@ -25,6 +26,15 @@ public class UserController {
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @GetMapping("/getAllUsers/paginated")
+    public ResponseEntity<PageResponseDTO<UserResponseDTO>> getAllUsersWithPagination(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir) {
+        return ResponseEntity.ok(userService.getAllUsersWithPagination(pageNo, pageSize, sortBy, sortDir));
     }
 
     @GetMapping("/{id}")
@@ -60,4 +70,3 @@ public class UserController {
         return ResponseEntity.ok(deleteResponse);
     }
 }
-

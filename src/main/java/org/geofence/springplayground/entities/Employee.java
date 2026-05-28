@@ -2,7 +2,11 @@ package org.geofence.springplayground.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -33,86 +37,86 @@ public class Employee {
     private String empEmail;
 
     // Constructors
-    public Employee() {}
-
-    public Employee(String empName, String empCity, String cityCode,
-                    double empSalary, int empAge, String empEmail) {
-
-        this.empName = empName;
-        this.empCity = empCity;
-        this.cityCode = cityCode;
-        this.empSalary = empSalary;
-        this.empAge = empAge;
-        this.empEmail = empEmail;
-    }
-
-    // Getters and Setters
-    public int getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(int empId) {
-        this.empId = empId;
-    }
-
-    public String getEmpName() {
-        return empName;
-    }
-
-    public void setEmpName(String empName) {
-        this.empName = empName;
-    }
-
-    public String getEmpCity() {
-        return empCity;
-    }
-
-    public void setEmpCity(String empCity) {
-        this.empCity = empCity;
-    }
-
-    public String getCityCode() {
-        return cityCode;
-    }
-
-    public void setCityCode(String cityCode) {
-        this.cityCode = cityCode;
-    }
-
-    public double getEmpSalary() {
-        return empSalary;
-    }
-
-    public void setEmpSalary(double empSalary) {
-        this.empSalary = empSalary;
-    }
-
-    public int getEmpAge() {
-        return empAge;
-    }
-
-    public void setEmpAge(int empAge) {
-        this.empAge = empAge;
-    }
-
-    public String getEmpEmail() {
-        return empEmail;
-    }
-
-    public void setEmpEmail(String empEmail) {
-        this.empEmail = empEmail;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "empId=" + empId +
-                ", empName='" + empName + '\'' +
-                ", empCity='" + empCity + '\'' +
-                ", cityCode='" + cityCode + '\'' +
-                ", empSalary=" + empSalary +
-                ", empAge=" + empAge +
-                ", empEmail='" + empEmail + '\'' +
-                '}';
-    }
+//    public Employee() {}
+//
+//    public Employee(String empName, String empCity, String cityCode,
+//                    double empSalary, int empAge, String empEmail) {
+//
+//        this.empName = empName;
+//        this.empCity = empCity;
+//        this.cityCode = cityCode;
+//        this.empSalary = empSalary;
+//        this.empAge = empAge;
+//        this.empEmail = empEmail;
+//    }
+//
+//    // Getters and Setters
+//    public int getEmpId() {
+//        return empId;
+//    }
+//
+//    public void setEmpId(int empId) {
+//        this.empId = empId;
+//    }
+//
+//    public String getEmpName() {
+//        return empName;
+//    }
+//
+//    public void setEmpName(String empName) {
+//        this.empName = empName;
+//    }
+//
+//    public String getEmpCity() {
+//        return empCity;
+//    }
+//
+//    public void setEmpCity(String empCity) {
+//        this.empCity = empCity;
+//    }
+//
+//    public String getCityCode() {
+//        return cityCode;
+//    }
+//
+//    public void setCityCode(String cityCode) {
+//        this.cityCode = cityCode;
+//    }
+//
+//    public double getEmpSalary() {
+//        return empSalary;
+//    }
+//
+//    public void setEmpSalary(double empSalary) {
+//        this.empSalary = empSalary;
+//    }
+//
+//    public int getEmpAge() {
+//        return empAge;
+//    }
+//
+//    public void setEmpAge(int empAge) {
+//        this.empAge = empAge;
+//    }
+//
+//    public String getEmpEmail() {
+//        return empEmail;
+//    }
+//
+//    public void setEmpEmail(String empEmail) {
+//        this.empEmail = empEmail;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Employee{" +
+//                "empId=" + empId +
+//                ", empName='" + empName + '\'' +
+//                ", empCity='" + empCity + '\'' +
+//                ", cityCode='" + cityCode + '\'' +
+//                ", empSalary=" + empSalary +
+//                ", empAge=" + empAge +
+//                ", empEmail='" + empEmail + '\'' +
+//                '}';
+//    }
 }

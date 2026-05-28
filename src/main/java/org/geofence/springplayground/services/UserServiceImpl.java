@@ -1,10 +1,15 @@
 package org.geofence.springplayground.services;
 
+import org.geofence.springplayground.dto.PageResponseDTO;
 import org.geofence.springplayground.dto.UserRequestDTO;
 import org.geofence.springplayground.dto.UserResponseDTO;
 import org.geofence.springplayground.entities.User;
 import org.geofence.springplayground.exceptions.UserNotFoundException;
 import org.geofence.springplayground.repositories.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -80,6 +85,29 @@ public class UserServiceImpl implements UserService {
         );
     }
 
+    @Override
+    public PageResponseDTO<UserResponseDTO> getAllUsersWithPagination(int pageNo, int pageSize, String sortBy, String sortDir) {
+        Sort.Direction direction = "asc".equalsIgnoreCase(sortDir) ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort sort = Sort.by(direction, sortBy);
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        Page<User> page = userRepository.findAll(pageable);
+        List<UserResponseDTO> content = page.getContent()
+                .stream()
+                .map(this::toResponseDTO)
+                .toList();
+
+        return new PageResponseDTO<>(
+                content,
+                pageNo,
+                pageSize,
+                page.getTotalPages(),
+                page.isLast(),
+                page.isFirst(),
+                (int) page.getTotalElements()
+        );
+    }
+
     private User findUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
@@ -93,4 +121,3 @@ public class UserServiceImpl implements UserService {
         return new User(dto.username(), dto.password());
     }
 }
-

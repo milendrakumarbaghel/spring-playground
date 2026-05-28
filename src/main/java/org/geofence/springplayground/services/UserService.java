@@ -1,5 +1,6 @@
 package org.geofence.springplayground.services;
 
+import org.geofence.springplayground.dto.PageResponseDTO;
 import org.geofence.springplayground.dto.UserRequestDTO;
 import org.geofence.springplayground.dto.UserResponseDTO;
 
@@ -14,5 +15,5 @@ public interface UserService {
     UserResponseDTO updateUserById(Long id, UserRequestDTO updatedUserDTO);
     UserResponseDTO patchUserById(Long id, UserRequestDTO updatedUserDTO);
     Map<String, Object> deleteUserById(Long id);
+    PageResponseDTO<UserResponseDTO> getAllUsersWithPagination(int pageNo, int pageSize, String sortBy, String sortDir);
 }
-
